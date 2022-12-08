@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup</title>
+</head>
+
+<body>
+  {% for message in messages %}
+  <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+    <strong>Message:</strong> {{ message }}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {% endfor %}
+  <div class="container">
+    <div class="card shadow" style="margin: 10px; padding: 10px;">
+
+      <h3>Signup Form</h3>
+
+      <form method="POST">
+        {% csrf_token %}
+
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input class="form-control" id="username" type="text" name="username" placeholder="Enter your username"
+            required />
+        </div>
+        <div class="form-group">
+          <label for="first_name">First Name</label>
+          <input class="form-control" id="first_name" type="text" name="first_name" placeholder="Enter your First Name"
+            required />
+        </div>
+
+        <div class="form-group">
+          <label for="last_name">Last Name</label>
+          <input class="form-control" id="last_name" type="text" name="last_name" placeholder="Enter your Last Name"
+            required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input class="form-control" id="email" type="email" name="email" placeholder="Enter your email" required />
+        </div>
+
+        <div class="form-group">
+          <label for="password1">Password</label>
+          <input class="form-control" id="password1" type="password" name="password1" placeholder="Enter your password"
+            required />
+        </div>
+
+        <div class="form-group">
+          <label for="password2">Confirm Password</label>
+          <input class="form-control" id="password2" type="password" name="password2"
+            placeholder="Confirm your password" required />
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Signup</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>
+{% endblock %}

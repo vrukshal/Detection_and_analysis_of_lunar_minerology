@@ -1,0 +1,40 @@
+{% load static %}
+
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.7.8/dist/semantic.min.css">
+        <link rel="stylesheet" type="text/css" href="{% static 'post/css/bootstrap.css' %}">
+        <title>ADF Practical 3 - User_List </title>
+    </head>
+<body>
+    <div class="container d-flex flex-row-reverse">
+        <a  href="{% url 'postcreate' %}"><button type="button" class="btn btn-primary" style="margin-top: 20px;">create post</button></a>
+    </div>
+    <div class="container">
+        {% for p in a1 %}	
+        
+        <div class="row justify-content-center">
+            <div class="col-xs-6">
+                <div class="card" style="width: 18rem;margin-top: 20px;">
+                    <h5 class="card-title fs-1">{{ p.Post_title }}</h5>
+                    <div class="card-body">
+                    <img src="{{ p.Post_Image.url }}" class="card-img-top" >
+                    <p class="card-text">{{ p.Post_Content }}</p>
+                    <br>
+                    <div class="col-8">
+                        {% for k in a2 %}	
+                        <div class="card">
+                            <div class="card-body">
+                               <br><b>{{ k.comment_owner }} </b>:  {{ k.value }}
+                            </div>
+                          </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
