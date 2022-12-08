@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.7.8/dist/semantic.min.css">
+        <title>ADF Practical 3 - User_List </title>
+    </head>
+<body>
+    <table class="ui celled striped table" style="margin:2%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Phone</th>
+                <th>Gender</th>
+                <th>Detail</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.address }}</td>
+            <td>{{ user.phone }}</td>
+            {% if user.gender > 2 %}
+                <td>Other</td>
+            {% elif user.gender > 1 %}
+                <td>Female</td>
+            {% else %}
+                <td>Male</td>
+            {%endif%}
+            <td>
+                <a  href="{% url 'userdetail' user.id  %}"><button class="ui primary button">click</button></a>
+            </td>
+            <td>
+                <a  href="{% url 'userupdate' user.id  %}"><button class="ui primary button">click</button></a>
+            </td>
+            <td>
+                <a  href="{% url 'userdelete' user.id  %}"><button class="ui primary button">click</button></a>
+            </td>
+        </tr>
+
+        {% endfor %}
+    </tbody>
+    </table>
+</body>
+</html>
